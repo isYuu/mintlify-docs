@@ -29,6 +29,10 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+      "name": "API",
+      "url": "api"
     }
   ],
   "anchors": [
@@ -51,11 +55,11 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
+      "pages": ["introduction", "quickstart", "development", "message"]
+    },
+    {
+      "group": "Message",
+      "pages": ["msg/SI", "msg/CP", "msg/MAS"]
     },
     {
       "group": "Essentials",
@@ -70,16 +74,16 @@
     },
     {
       "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
+      "pages": ["api-reference/introduction"]
     },
     {
       "group": "Endpoint Examples",
       "pages": [
         "api-reference/endpoint/get",
         "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/endpoint/delete",
+        "api-reference/endpoint/random_joke",
+        "api-reference/endpoint/age"
       ]
     }
   ],

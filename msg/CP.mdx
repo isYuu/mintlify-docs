@@ -1,0 +1,40 @@
+## Force Change Password
+
+<Accordion title="Request">
+  <ParamField path="MsgType" type="string" default="none" required>
+    Header of the message.
+  </ParamField>
+  <ParamField path="AccountID" type="string" required>
+    Market index.
+  </ParamField>
+  <ParamField path="OldPass" type="string" default="M" required>
+    Board type.
+  </ParamField>
+  <ParamField path="NewPass" type="int" required/>
+  <ParamField path="IP" type="int"/>
+  <ParamField path="Prefix" type="int" required/>
+  ```javascript Example
+{
+    "MsgType": "ACP",
+    "AccountID": "0000061",
+    "OldPass": "oldPW",
+    "NewPass": "NewPW",
+    "IP": 10.32.1.80,
+    "Prefix": 0    
+}
+```
+</Accordion>
+<Accordion title="Response">
+  <ResponseField name="MsgType" type="string">
+    Header of the message.
+  </ResponseField>
+  <ResponseField name="Result" type="string"/>
+  <ResponseField name="user" type="string"/>
+```javascript Example
+{
+    "MsgType": "ACP",
+    "Result": "Success",
+    "user": "0000061"
+}
+```
+</Accordion>

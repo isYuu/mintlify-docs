@@ -1,0 +1,201 @@
+## Stock Information
+
+<Accordion title="Request">
+  <ParamField path="MsgType" type="string" default="none" required>
+    Header of the message.
+  </ParamField>
+  <ParamField path="Instru_Symbol" type="string" required>
+    Stock name.
+  </ParamField>
+  <ParamField path="MarketID" type="string" required>
+    Market index.
+  </ParamField>
+  <ParamField path="Board" type="string" default="M" required>
+    Board type.
+  </ParamField>
+  <ParamField path="SubType" type="int" required>
+    Request for specific data type 0-99.
+  </ParamField>
+  ```javascript Example
+{
+  "MsgType": "ASI",
+  "Instru_Symbol": "AAV",
+  "MarketID": "HNX",
+  "Board": "M",
+  "SubType": 10
+}
+```
+</Accordion>
+
+<AccordionGroup>
+
+<Accordion title="Response SubType 0">
+  <ResponseField name="MsgType" type="string">
+    Header of the message.
+  </ResponseField>
+  <ResponseField name="Instru_Symbol" type="string">
+    Stock name.
+  </ResponseField>
+  <ResponseField name="MarketID" type="string">
+    Market index.
+  </ResponseField>
+  <ResponseField name="Board" type="char">
+    Board type.
+  </ResponseField>
+  <ResponseField name="SubType" type="int">
+    Subtype of the response.
+  </ResponseField>
+  <ResponseField name="Open" type="double">
+    Opening price.
+  </ResponseField>
+  <ResponseField name="High" type="double">
+    Highest price.
+  </ResponseField>
+  <ResponseField name="Low" type="double">
+    Lowest price.
+  </ResponseField>
+  <ResponseField name="Ceiling" type="double">
+    Ceiling price.
+  </ResponseField>
+  <ResponseField name="PriorDate" type="string">
+    Prior date.
+  </ResponseField>
+  <ResponseField name="PriorPrice" type="double">
+    Prior price.
+  </ResponseField>
+  <ResponseField name="PriorNight" type="double">
+    Prior night price.
+  </ResponseField>
+  <ResponseField name="LastPrice" type="double">
+    Last price.
+  </ResponseField>
+  ```javascript Example
+{
+  "MsgType": "DSI",
+  "Instru_Symbol": "AAV",
+  "MarketID": "HNX",
+  "Board": "M",
+  "SubType": 0,
+  "Open": 10,
+  "High": 10,
+  "Low": 10,
+  "Ceiling": 10,
+  "PriorDate": "2023-05-15",
+  "PriorPrice": 10,
+  "PriorNight": 10,
+  "LastPrice": 10  
+}
+```
+</Accordion>
+
+<Accordion title="Response SubType 8">
+  <ResponseField name="MsgType" type="string">
+    Header of the message.
+  </ResponseField>
+  <ResponseField name="Instru_Symbol" type="string">
+    Stock name.
+  </ResponseField>
+  <ResponseField name="MarketID" type="string">
+    Market index.
+  </ResponseField>
+  <ResponseField name="Board" type="char">
+    Board type.
+  </ResponseField>
+  <ResponseField name="SubType" type="int">
+    Subtype of the response.
+  </ResponseField>
+  <ResponseField name="data">
+    <Expandable title="Toggle details">
+      <ResponseField name="Time" type="string">
+        Time of the data.
+      </ResponseField>
+      <ResponseField name="Price" type="double">
+        Price of the stock.
+      </ResponseField>
+      <ResponseField name="Volume" type="double">
+        Volume of the stock.
+      </ResponseField>
+      <ResponseField name="Side" type="char">
+        Side of the trade.
+      </ResponseField>
+      <ResponseField name="PriorPrice" type="char">
+        Prior price.
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+  ```javascript Example
+{
+  "MsgType": "DSI",
+  "Instru_Symbol": "AAV",
+  "MarketID": "HNX",
+  "Board": "M",
+  "SubType": 8,
+  "data": {
+    "Time": "10:00:00",
+    "Price": 10,
+    "Volume": 10,
+    "Side": "B",
+    "PriorPrice": "C"
+  }
+}
+```
+</Accordion>
+
+<Accordion title="Response SubType 10">
+  <ResponseField name="MsgType" type="string">
+    Header of the message.
+  </ResponseField>
+  <ResponseField name="Instru_Symbol" type="string">
+    Stock name.
+  </ResponseField>
+  <ResponseField name="MarketID" type="string">
+    Market index.
+  </ResponseField>
+  <ResponseField name="Board" type="char">
+    Board type.
+  </ResponseField>
+  <ResponseField name="SubType" type="int">
+    Subtype of the response.
+  </ResponseField>
+  <ResponseField name="data">
+    <Expandable title="Toggle details">
+      <ResponseField name="BidPrice" type="double">
+        Bid price.
+      </ResponseField>
+      <ResponseField name="BidShares" type="double">
+        Bid shares.
+      </ResponseField>
+      <ResponseField name="OfferPrice" type="double">
+        Offer price.
+      </ResponseField>
+      <ResponseField name="OfferShares" type="double">
+        Offer shares.
+      </ResponseField>
+      <ResponseField name="BidColor" type="char">
+        Bid color.
+      </ResponseField>
+      <ResponseField name="OfferColor" type="char">
+        Offer color.
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+```javascript Example
+{
+  "MsgType": "RSI",
+  "Instru_Symbol": "AAV",
+  "MarketID": "HNX",
+  "Board": "M",
+  "SubType": 10,
+  "data":{
+    "BidPrice     ":"10"
+    "BidShares    ":"10"
+    "OfferPrice   ":"10"
+    "OfferShares  ":"10"
+    "BidColor     ":"C"
+    "OfferColor   ":"C"
+    }
+}
+```
+</Accordion>
+
+</AccordionGroup>

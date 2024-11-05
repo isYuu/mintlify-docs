@@ -10,15 +10,71 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
-    }
-  ],
-  "security": [
+      "url": "https://reqres.in/api"
+    },
     {
-      "bearerAuth": []
+      "url": "https://official-joke-api.appspot.com"
     }
   ],
   "paths": {
+    "/login": {
+      "post": {
+        "description": "Creates a new plant in the store",
+        "requestBody": {
+          "description": "Plant to add to the store",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Search"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "plant response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Search"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/random_joke": {
+      "get": {
+        "description": "Hahaha",
+        "responses": {
+          "200": {
+            "description": "Joke response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Joke"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/plants": {
       "get": {
         "description": "Returns all plants from the system that the user has access to",
@@ -132,10 +188,40 @@
   },
   "components": {
     "schemas": {
+      "Search": {
+        "properties": {
+          "email": {
+            "description": "type of email",
+            "type": "string"
+          },
+          "password": {
+            "description": "type of password",
+            "type": "string"
+          }
+        }
+      },
+      "Joke": {
+        "properties": {
+          "type": {
+            "description": "type of joke",
+            "type": "string"
+          },
+          "setup": {
+            "description": "story",
+            "type": "string"
+          },
+          "punchline": {
+            "description": "real joke",
+            "type": "string"
+          },
+          "id": {
+            "description": "id of joke",
+            "type": "string"
+          }
+        }
+      },
       "Plant": {
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "type": "object",
         "properties": {
           "name": {
@@ -154,9 +240,7 @@
             "$ref": "#/components/schemas/Plant"
           },
           {
-            "required": [
-              "id"
-            ],
+            "required": ["id"],
             "type": "object",
             "properties": {
               "id": {
@@ -169,10 +253,7 @@
         ]
       },
       "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
+        "required": ["error", "message"],
         "type": "object",
         "properties": {
           "error": {

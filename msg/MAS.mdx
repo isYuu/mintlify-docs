@@ -1,0 +1,115 @@
+## Most Active Stocks
+
+<Accordion title="Request">
+  <ParamField path="MsgType" type="string" default="none" required>
+    Header of the message.
+  </ParamField>
+  <ParamField path="MarketID" type="string" required>
+    Market index.
+  </ParamField>
+  <ParamField path="Board" type="string" default="M" required>
+    Board type.
+  </ParamField>
+  <ParamField path="SubType" type="int" required>
+    Request for specific data type 0-99.
+  </ParamField>
+```javascript Example
+{
+  "MsgType": "AMAS",
+  "MarketID": "HNX",
+  "PageSize": "50",
+  "PageNo": "3",
+  "SubType": 0
+}
+```
+</Accordion>
+<Accordion title="Response">
+  <ResponseField name="MsgType" type="string">
+    Header of the message.
+  </ResponseField>
+  <ResponseField name="MarketID" type="string">
+    Market index.
+  </ResponseField>
+  <ResponseField name="PageNo" type="int">
+    Board type.
+  </ResponseField>
+  <ResponseField name="TotalPage" type="int">
+    Subtype of the response.
+  </ResponseField>
+  <ResponseField name="SubType" type="int">
+    Opening price.
+  </ResponseField>
+  <ResponseField name="data">
+    <Expandable title="Toggle details">
+      <ResponseField name="Instru_Symbol" type="string">
+        Time of the data.
+      </ResponseField>
+      <ResponseField name="MainTotalVolume" type="double">
+        Price of the stock.
+      </ResponseField>
+      <ResponseField name="MainTotalValue" type="double">
+        Volume of the stock.
+      </ResponseField>
+      <ResponseField name="High" type="int">
+        Side of the trade.
+      </ResponseField>
+      <ResponseField name="Low" type="int">
+        Prior price.
+      </ResponseField>
+      <ResponseField name="LastPrice" type="int">
+        Prior price.
+      </ResponseField>
+      <ResponseField name="AvgPrice" type="int">
+        Prior price.
+      </ResponseField>
+      <ResponseField name="PriceChange" type="int">
+        Prior price.
+      </ResponseField>
+      <ResponseField name="PercentChange" type="int">
+        Prior price.
+      </ResponseField>
+      <ResponseField name="PercentMktVal" type="int">
+        Prior price.
+      </ResponseField>
+      <ResponseField name="BidVolume" type="int">
+        Prior price.
+      </ResponseField>
+      <ResponseField name="BidPrice" type="int">
+        Prior price.
+      </ResponseField>
+      <ResponseField name="OfferPrice" type="int">
+        Prior price.
+      </ResponseField>
+      <ResponseField name="OfferVolume" type="int">
+        Prior price.
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+  ```javascript Example
+{
+    "MsgType": "RMAS",
+    "MarketID": "HNX",
+    "PageNo": 3,
+    "TotalPage": 10,
+    "SubType": 0,
+    "data": [
+        {
+        "Instru_Symbol": "AAV",
+        "MainTotalVolume": 10,
+        "MainTotalValue": 10,
+        "High": 10,
+        "Low": 10,
+        "LastPrice": 10,
+        "AvgPrice": 10,
+        "PriceChange": 10,
+        "PercentChange": 10,
+        "PercentMktVal": 10,
+        "BidVolume": 10,
+        "BidPrice": 10,
+        "OfferPrice": 10,
+        "OfferVolume": 10
+        }
+    ]
+}
+```
+</Accordion>
